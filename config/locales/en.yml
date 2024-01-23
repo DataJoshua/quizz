@@ -30,4 +30,12 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      quiz:
+        name: "Quiz Title"
+      question:
+        content: "Question: "
+      option:
+        content: "Option content:"
+        correct: "Correct:"

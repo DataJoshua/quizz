@@ -1,8 +1,12 @@
 h1
   = "Hi teacher #{current_user.username}"
 
+= link_to "create quiz", new_quiz_path
+
 = link_to "log out", session_path, data: { turbo_method: :delete }
 
+h1
+  | Quizzes you have created
 
 - @quizzes.each do |quiz|
   = render "quiz", quiz: quiz

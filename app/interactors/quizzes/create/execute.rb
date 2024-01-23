@@ -6,7 +6,7 @@ module Quizzes
       delegate :quiz, to: :context
 
       def call
-        content.fail!(error: quiz_errors) unless quiz.save
+        context.fail!(error: quiz_errors) unless quiz.save
       end
 
       private
