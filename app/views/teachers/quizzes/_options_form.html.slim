@@ -1,0 +1,12 @@
+div[class="nested-form-wrapper" data-new-record="#{fff.object.new_record?}"]
+  div
+    = fff.label :content
+    = fff.text_field :content
+  div
+    = fff.label :correct
+    = fff.check_box :correct
+
+  button[type="button" data-action="nested-form#remove"]
+    | X
+
+  = fff.hidden_field :_destroy

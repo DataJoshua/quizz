@@ -1,0 +1,22 @@
+div[class="nested-form-wrapper" data-new-record="#{ff.object.new_record?}"]
+  div[class="bg-slate-500"]
+    = ff.label :content
+    = ff.text_field :content
+
+    button[type="button" data-action="nested-form#remove"]
+      | x
+
+    = ff.hidden_field :_destroy
+
+  div[data-controller="nested-form" class="bg-slate-400"] 
+    template[data-nested-form-target="template"]
+      = ff.fields_for :options, ff.object.options.build, child_index: "NEW_RECORD" do |fff|
+        = render "options_form", fff: fff
+
+    = ff.fields_for :options, persisted ? ff.object.options : ff.object.options.build do |fff|
+      = render "options_form", fff: fff
+
+    div[data-nested-form-target="target"]
+
+    button[type="button" data-action="nested-form#add"]
+      | Add option

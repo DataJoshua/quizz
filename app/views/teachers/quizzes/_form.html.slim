@@ -1,0 +1,14 @@
+= form_with(model: quiz, data: { controller: "nested-form" }) do |f|
+  template[data-nested-form-target="template"]
+    = f.fields_for :questions, Question.new, child_index: "NEW_RECORD" do |ff|
+      = render "question_form", ff: ff, persisted: false
+
+  = f.fields_for :questions, local_assigns[:persisted] ? f.object.questions : f.object.questions.build do |ff|
+    = render "question_form", ff: ff, persisted: local_assigns[:persisted]
+
+  div[data-nested-form-target="target"]
+
+  button[type="button" data-action="nested-form#add"]
+    | Add quetion
+
+  = f.submit
