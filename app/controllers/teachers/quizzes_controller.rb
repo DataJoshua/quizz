@@ -22,6 +22,17 @@ module Teachers
     end
 
     def update
+      @quiz = Quiz.find(params[:id])
+
+      if update_quiz.success?
+        flash[:notice] = "Quiz updated"
+
+        redirect_to dashboard_path
+      else
+        flash[:notice] = update_quiz.error
+
+        render :edit, status: :unprocessable_entity
+      end
     end
 
     def edit
@@ -32,6 +43,10 @@ module Teachers
 
     def create_quiz
       @create_quiz ||= Quizzes::Create.call(quiz: @quiz)
+    end
+
+    def update_quiz
+      @update_quiz ||= Quizzes::Update.call(quiz: @quiz, quiz_params:)
     end
 
     def quiz_params
