@@ -1,4 +1,9 @@
 = form_with(model: quiz, data: { controller: "nested-form" }) do |f|
+  
+  div
+    = f.label :name
+    = f.text_field :name
+
   template[data-nested-form-target="template"]
     = f.fields_for :questions, Question.new, child_index: "NEW_RECORD" do |ff|
       = render "question_form", ff: ff, persisted: false

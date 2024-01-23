@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   constraints(TeacherContraint) do
     scope module: :teachers do
       resource :dashboard, only: %i[show]
-      resources :quizzes
+      resources :quizzes, only: %i[edit update create new destroy]
     end
   end
 

@@ -1,8 +1,5 @@
 module Teachers
   class QuizzesController < ApplicationController
-    def index
-    end
-
     def new
       @quiz = Quiz.new
     end
@@ -39,19 +36,34 @@ module Teachers
       @quiz = Quiz.find(params[:id])
     end
 
+    def destroy
+      @quiz = Quiz.find(params[:id])
+
+      if destroy_quiz.success?
+        flash[:notice] = "quiz deleted"
+      else
+        flash[:alert] = destroy_quiz.error
+      end
+      redirect_to dashboard_path
+    end
+
     private
 
     def create_quiz
-      @create_quiz ||= Quizzes::Create.call(quiz: @quiz)
+      @create_quiz ||= Quizzes::Create.call(quiz: @quiz, user: current_user)
     end
 
     def update_quiz
       @update_quiz ||= Quizzes::Update.call(quiz: @quiz, quiz_params:)
     end
 
+    def destroy_quiz
+      @destroy_quiz ||= Quizzes::Destroy.call(quiz: @quiz)
+    end
+
     def quiz_params
       params.require(:quiz)
-            .permit(questions_attributes: [:id,
+            .permit(:name, questions_attributes: [:id,
                                            :content,
                                            :_destroy, 
                                            options_attributes: %i[id _destroy content correct]])

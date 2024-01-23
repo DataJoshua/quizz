@@ -1,0 +1,6 @@
+h1
+  = quiz.name
+
+div
+  = link_to "edit quiz", edit_quiz_path(quiz)
+  = link_to "delete this quiz", quiz_path(quiz), data: { turbo_method: :delete }
