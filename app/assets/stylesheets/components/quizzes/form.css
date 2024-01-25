@@ -1,0 +1,20 @@
+.quizzes-form {
+  @apply max-w-[80%] m-auto mt-[90px] rounded-lg bg-slate-300 py-[30px] px-[20px];
+}
+
+.form-field {
+  @apply block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50;
+
+}
+
+.form-field--small {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-[2.5];
+}
+
+.form-field--medium {
+  @apply block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50;
+}
+
+.flex-box {
+  @apply flex justify-center items-center gap-1;
+}

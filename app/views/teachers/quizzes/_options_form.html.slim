@@ -1,7 +1,6 @@
 div[class="nested-form-wrapper" data-new-record="#{fff.object.new_record?}"]
   div
-    = fff.label :content
-    = fff.text_field :content
+    = fff.text_field :content, class: "form-field--small", placeholder: "Option content:"
   div
     = fff.label :correct
     = fff.check_box :correct

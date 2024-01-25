@@ -1,12 +1,14 @@
 div[class="nested-form-wrapper" data-new-record="#{ff.object.new_record?}"]
-  div[class="bg-slate-500"]
-    = ff.label :content
-    = ff.text_field :content
+  h1
+    = "Question number #{local_assigns[:new_id] ? local_assigns[:new_id] : 1}"
 
+  .flex-box
+    = ff.text_field :content, class: "form-field--medium", placeholder: "Question content: "
+    h1
     button[type="button" data-action="nested-form#remove"]
       | x
 
-    = ff.hidden_field :_destroy
+  = ff.hidden_field :_destroy
   
   div[class="bg-slate-400" data-controller="nested-form"] 
     = ff.fields_for :options, persisted ? ff.object.options : ff.object.options.build do |fff|
