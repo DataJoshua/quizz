@@ -11,7 +11,8 @@
 
   div[data-nested-form-target="target"]
 
-  button[type="button" data-action="nested-form#add"]
-    | Add question
+  .form-buttons-container
+    button[type="button" class="btn btn-indigo" data-action="nested-form#add"]
+      | Add question
 
-  = f.submit
+    = f.submit class: "btn btn-blue"

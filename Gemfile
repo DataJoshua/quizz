@@ -5,6 +5,7 @@ ruby "3.1.0"
 
 gem "rails", "~> 7.0.8"
 gem "interactor"
+gem "inline_svg", "~> 1.9"
 gem "rolify"
 gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
