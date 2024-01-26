@@ -1,11 +1,11 @@
-div[class="nested-form-wrapper" data-new-record="#{fff.object.new_record?}"]
-  div
+div[class="nested-form-wrapper options-form" data-new-record="#{fff.object.new_record?}"]
+  .options-form-container
+    = inline_svg_tag "cross.svg", width: 15, height: 15, class: "cross", data: { action: "click->nested-form#remove"}
+    
     = fff.text_field :content, class: "form-field--small", placeholder: "Option content:"
-  div
-    = fff.label :correct
-    = fff.check_box :correct
-
-  button[type="button" data-action="nested-form#remove"]
-    | X
+    
+    .options-form__check-box
+      = fff.label :correct
+      = fff.check_box :correct
 
   = fff.hidden_field :_destroy

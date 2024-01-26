@@ -1,5 +1,5 @@
 .quizzes-form {
-  @apply max-w-[80%] m-auto mt-[90px] rounded-lg bg-slate-300 py-[30px] px-[20px];
+  @apply max-w-[50%] m-auto mt-[90px] rounded-lg bg-slate-300 py-[30px] px-[20px];
 }
 
 .form-field {
@@ -15,6 +15,62 @@
   @apply block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50;
 }
 
-.flex-box {
-  @apply flex justify-center items-center gap-1;
+.question-form {
+  @apply mx-[30px];
+}
+
+.question-form-wrapper {
+  @apply flex justify-around items-center my-4;
+}
+
+.question-title {
+  @apply text-xl;
+}
+
+.options-wrapper {
+  @apply flex flex-col items-center px-[30px] mt-[20px];
+}
+
+.options-form {
+  @apply w-full;
+}
+
+.options-form-container {
+  @apply flex gap-3 items-center;
+}
+
+.options-form__check-box {
+  @apply flex gap-2 items-center;
+}
+
+.btn {
+  @apply font-bold py-2 px-4 rounded;
+}
+
+.btn-blue {
+  @apply bg-blue-500 text-white;
+}
+
+.btn-indigo {
+  @apply bg-indigo-500 text-white;
+}
+
+.btn-small {
+  @apply text-xs;
+}
+
+.btn-blue:hover {
+  @apply bg-blue-700 cursor-pointer;
+}
+
+.form-buttons-container {
+  @apply flex justify-end gap-3 my-3;
+}
+
+.button-container {
+  @apply my-3
+}
+
+.cross:hover {
+  @apply cursor-pointer;
 }
