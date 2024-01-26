@@ -10,7 +10,7 @@ module Teachers
       if create_quiz.success?
         flash[:notice] = "Quiz created successfully"
 
-        redirect_to quizzes_path
+        redirect_to dashboard_path
       else
         flash[:alert] = create_quiz.error
 

@@ -1,0 +1,35 @@
+.teacher-nav {
+  @apply flex bg-indigo-300 py-5 justify-around items-center;
+}
+
+.teacher-nav-title {
+  @apply text-xl;
+}
+
+.teacher-profile {
+  @apply flex justify-center items-center gap-2;
+}
+
+.teacher-nav-buttons {
+  @apply flex justify-center gap-2;
+}
+
+.dashboard-body {
+  @apply bg-indigo-100 h-full h-screen;
+}
+
+.dashboard-quizzes-wrapper {
+  @apply flex flex-col items-center justify-center gap-5;
+}
+
+.dashboard-title {
+  @apply text-xl text-center py-5;
+}
+
+.card-wrapper {
+  @apply min-w-[500px] p-6 bg-white border border-gray-200 rounded-lg shadow;
+}
+
+.card-title {
+  @apply mb-2 text-xl font-bold tracking-tight text-gray-900;
+}
