@@ -5,7 +5,7 @@ div[class="nested-form-wrapper options-form" data-new-record="#{fff.object.new_r
     = fff.text_field :content, class: "form-field--small", placeholder: "Option content:"
     
     .options-form__check-box
-      = fff.label :correct
-      = fff.check_box :correct
+      = fff.label :correct, class: "form-checkbox__label"
+      = fff.check_box :correct, class: "form-checkbox"
 
   = fff.hidden_field :_destroy

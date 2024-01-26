@@ -1,6 +1,7 @@
-h1
-  = quiz.name
+.card-wrapper
+  .card-title
+    = quiz.name
 
-div
-  = link_to "edit quiz", edit_quiz_path(quiz)
-  = link_to "delete this quiz", quiz_path(quiz), data: { turbo_method: :delete }
+  .flex.justify-end.gap-3
+    = link_to "edit quiz", edit_quiz_path(quiz), class: "btn btn-indigo"
+    = link_to "delete this quiz", quiz_path(quiz), data: { turbo_method: :delete }, class: "btn btn-red"
