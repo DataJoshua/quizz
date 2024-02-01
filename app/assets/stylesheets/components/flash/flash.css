@@ -17,3 +17,21 @@
 .toast-btn:hover {
   @apply cursor-pointer;
 }
+
+.dismiss-animation {
+  animation-name: dismiss;
+  animation-duration: 0.8s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes dismiss {
+  from{
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
