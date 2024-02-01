@@ -6,8 +6,7 @@ export default class extends Controller {
   connect() {
     if(this.hasBodyTarget) {
       setTimeout(() => {
-      this.bodyTarget.classList.add("dismiss-animation");
-      
+        this.bodyTarget.classList.add("dismiss-animation");
       }, 5000);
     }
   }
