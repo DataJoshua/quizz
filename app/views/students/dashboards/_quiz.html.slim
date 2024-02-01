@@ -1,0 +1,6 @@
+.card-wrapper
+  .card-title
+    = quiz.name
+
+  .flex.justify-end.gap-3
+    = link_to "Solve", quiz_path(quiz)

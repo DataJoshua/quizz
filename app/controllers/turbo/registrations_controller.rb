@@ -1,7 +1,7 @@
 module Turbo
   class RegistrationsController < ApplicationController
     def create
-      @roles = Role .all
+      @roles = Role.all
       @user = User.new(user_params.except(:role))
 
       if create_user.success?

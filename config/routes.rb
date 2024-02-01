@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   namespace :turbo do
-    resources :registrations, only: %i[create]
+    resource :registration, only: %i[create]
   end
 
   root "registrations#new"
 
-  resources :registrations, only: %i[new]
+  resource :registration, only: %i[new]
   resource :session, only: %i[new create destroy]
 
   constraints(TeacherContraint) do
@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   end
 
   constraints(StudentContraint) do
-    resource :dashboard, only: %i[show], module: :students
+    scope module: :students do
+      resource :dashboard, only: %i[show]
+      resources :quizzes, only: %i[show]
+    end
   end
 end
