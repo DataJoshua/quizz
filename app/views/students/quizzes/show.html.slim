@@ -1,6 +1,8 @@
 h1
   = "quiz #{@quiz.name}"
 
-- @quiz.questions.each do |question|
-  = render "question", question: question
-
+= form_with(scope: :answers, url: answers_path) do |f|
+  - @quiz.questions.each do |question|
+    = render "question", question: question, f: f
+  
+  = f.submit

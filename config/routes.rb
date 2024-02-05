@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     scope module: :students do
       resource :dashboard, only: %i[show]
       resources :quizzes, only: %i[show]
+      resources :answers, only: %i[create]
     end
   end
 end
