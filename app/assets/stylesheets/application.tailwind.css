@@ -2,6 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "./components/flash/flash.css";
 @import "./components/shared/buttons.css";
 @import "./components/quizzes/form.css";
 @import "./components/teachers/dashboards.css";
