@@ -5,7 +5,6 @@ h1
   h1
     = f.fields_for dom_id(option) do |ff|
       = option.content
-      = ff.hidden_field :question_id, value: question.id
       = ff.hidden_field :option_id, value: option.id
 
-      = ff.check_box :correct
+      = ff.check_box :checked

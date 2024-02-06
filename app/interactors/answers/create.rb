@@ -8,7 +8,7 @@ module Answers
       answers = []
 
       solution_params.each do |answer_params|
-        params = answer_params.merge(user_id: user.id).except(:option_id)
+        params = answer_params.merge(user:)
 
         answers << Answer.new(params)
       end
