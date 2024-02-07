@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action_policy (0.6.8)
+      ruby-next-core (>= 1.0)
     actioncable (7.0.8)
       actionpack (= 7.0.8)
       activesupport (= 7.0.8)
@@ -182,6 +184,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.2.6)
     rolify (6.0.1)
+    ruby-next-core (1.0.1)
     rubyzip (2.3.2)
     seedbank (0.5.0)
       rake (>= 10.0)
@@ -236,6 +239,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  action_policy
   activerecord-import
   bcrypt (~> 3.1.7)
   bootsnap

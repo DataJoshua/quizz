@@ -18,8 +18,9 @@ Rails.application.routes.draw do
   constraints(StudentContraint) do
     scope module: :students do
       resource :dashboard, only: %i[show]
-      resources :quizzes, only: %i[show]
-      resources :answers, only: %i[create]
+      resources :quizzes, only: %i[show] do
+        resources :answers, only: %i[create]
+      end
     end
   end
 end

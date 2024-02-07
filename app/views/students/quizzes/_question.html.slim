@@ -2,9 +2,17 @@ h1
   = question.content
 
 - question.options.each do |option|
-  h1
-    = f.fields_for dom_id(option) do |ff|
-      = option.content
-      = ff.hidden_field :option_id, value: option.id
+  - if option.answers.where(user: current_user).empty?  
+    h1
+      = f.fields_for dom_id(option) do |ff|
+        = option.content
+        = ff.hidden_field :option_id, value: option.id
+        = ff.hidden_field :quiz_id, value: question.quiz.id
 
-      = ff.check_box :checked
+        = ff.check_box :checked
+  - else
+    - option.answers.where(user: current_user).each do |d|
+      h1
+        = option.content
+      h2
+        = d.correct ? "True" : "false"
