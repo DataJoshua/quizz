@@ -1,0 +1,23 @@
+.student-quiz__title {
+  @apply text-center my-4 text-3xl;
+}
+
+.student-quiz__form-wrapper {
+  @apply flex justify-center items-center mt-[100px];
+}
+
+.student-form {
+  @apply flex flex-col gap-3 border border-2 p-8 rounded-lg;
+}
+
+.student-form__submit {
+  @apply flex justify-center
+}
+
+.question-title {
+  @apply text-xl underline;
+}
+
+.question-wrapper {
+  @apply flex gap-2 items-center;
+}

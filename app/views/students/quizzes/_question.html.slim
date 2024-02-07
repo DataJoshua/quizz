@@ -1,19 +1,26 @@
-h1
+.question-title
   = question.content
 
 - if allowed_to?(:create?, quiz, with: AnswerPolicy)
   div[data-controller="checkbox"]
-    - question.options.each do |option|
+    - question.options.each_with_index do |option, index|
       = f.fields_for dom_id(option) do |ff|
-        h1
-          = option.content
         = ff.hidden_field :option_id, value: option.id
         = ff.hidden_field :quiz_id, value: quiz.id
 
-        = ff.check_box :checked, data: { checkbox_target: "checkbox",
-                                         action: "click->checkbox#handleSingleAnswer" }
+        .question-wrapper
+          = ff.check_box :checked, data: { checkbox_target: "checkbox",
+                                         action: "click->checkbox#handleSingleAnswer" } 
+          .question-content
+            = "#{index + 1}) #{option.content}"
 - else
   - question.options.each do |option|
-    h1
-      = option.content
-    = option.answer_for_this_option(current_user)
+    .question-wrapper
+      .question-content
+        = option.content
+      .question-result
+        - if option.answer_for_this_option(current_user)
+          = inline_svg_tag "correct.svg", width: 20, height: 20
+        // Not quite good :/
+        - elsif !option.answer_for_this_option(current_user).nil?
+          = inline_svg_tag "incorrect.svg", width: 20, height: 20

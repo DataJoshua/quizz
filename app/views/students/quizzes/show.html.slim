@@ -1,9 +1,11 @@
-h1
-  = "quiz #{@quiz.name}"
+.student-quiz__title
+  = @quiz.name
 
-= form_with(scope: :answers, url: quiz_answers_path(@quiz)) do |f|
-  - @quiz.questions.each do |question|
-    = render "question", question: question, quiz: @quiz, f: f
+.student-quiz__form-wrapper
+  = form_with(scope: :answers, url: quiz_answers_path(@quiz), class: "student-form") do |f|
+    - @quiz.questions.each do |question|
+      = render "question", question: question, quiz: @quiz, f: f
 
-  - if allowed_to?(:create?, @quiz, with: AnswerPolicy)
-    = f.submit t(".submit")
+    - if allowed_to?(:create?, @quiz, with: AnswerPolicy)
+      .student-form__submit
+        = f.submit t(".submit"), class: "btn btn-blue"
