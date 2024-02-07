@@ -3,6 +3,7 @@ h1
 
 = form_with(scope: :answers, url: quiz_answers_path(@quiz)) do |f|
   - @quiz.questions.each do |question|
-    = render "question", question: question, f: f
-  
-  = f.submit
+    = render "question", question: question, quiz: @quiz, f: f
+
+  - if allowed_to?(:create?, @quiz, with: AnswerPolicy)
+    = f.submit t(".submit")

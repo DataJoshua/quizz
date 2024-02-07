@@ -30,6 +30,10 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  students:
+    quizzes:
+      show:
+        submit: "Submit Test"
   activerecord:
     attributes:
       quiz:

@@ -1,18 +1,19 @@
 h1
   = question.content
 
-- question.options.each do |option|
-  - if option.answers.where(user: current_user).empty?  
-    h1
+- if allowed_to?(:create?, quiz, with: AnswerPolicy)
+  div[data-controller="checkbox"]
+    - question.options.each do |option|
       = f.fields_for dom_id(option) do |ff|
-        = option.content
+        h1
+          = option.content
         = ff.hidden_field :option_id, value: option.id
-        = ff.hidden_field :quiz_id, value: question.quiz.id
+        = ff.hidden_field :quiz_id, value: quiz.id
 
-        = ff.check_box :checked
-  - else
-    - option.answers.where(user: current_user).each do |d|
-      h1
-        = option.content
-      h2
-        = d.correct ? "True" : "false"
+        = ff.check_box :checked, data: { checkbox_target: "checkbox",
+                                         action: "click->checkbox#handleSingleAnswer" }
+- else
+  - question.options.each do |option|
+    h1
+      = option.content
+    = option.answer_for_this_option(current_user)

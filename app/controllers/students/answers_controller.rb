@@ -23,7 +23,7 @@ module Students
     end
 
     def create_answers
-      @create_answer ||= Answers::Create.call(solution_params: solution_params, user: current_user)
+      @create_answer ||= Answers::Create.call(solution_params: solution_params, user: current_user, quiz: @quiz)
     end
 
     def solution_params

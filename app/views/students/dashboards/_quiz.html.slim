@@ -2,5 +2,7 @@
   .card-title
     = quiz.name
 
-  .flex.justify-end.gap-3
-    = link_to "Solve", quiz_path(quiz)
+  - if allowed_to?(:create?, quiz, with: AnswerPolicy)
+    = render "button", label: "Solve", quiz: quiz
+  - else
+    = render "button", label: "View Results", quiz: quiz
