@@ -1,5 +1,5 @@
 class QuizDecorator < ApplicationDecorator
   delegate_all
 
-  decorates_associations :questions
+  decorates_association :questions
 end

@@ -1,5 +1,5 @@
 class QuestionDecorator < ApplicationDecorator
   delegate_all
 
-  decorates_associations :options
+  decorates_association :options
 end

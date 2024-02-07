@@ -13,7 +13,7 @@ module Students
         flash[:alert] = create_answers.error
       end
 
-      redirect_to dashboard_path
+      redirect_to quiz_path(@quiz)
     end
 
     private
