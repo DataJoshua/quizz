@@ -2,9 +2,9 @@ module Answers
   class Create
     class ValidateAnswers
       include Interactor
-  
+
       delegate :quiz, :user, to: :context
-  
+
       def call
         questions = quiz.questions.includes(:options)
   
