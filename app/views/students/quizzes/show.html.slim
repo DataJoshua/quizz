@@ -1,5 +1,8 @@
-.student-quiz__title
-  = @quiz.name
+.flex-wrapper
+  .student-quiz__title
+    = @quiz.name
+  .student-quiz__points
+    = "pts #{@quiz.score}"
 
 .student-quiz__form-wrapper
   = form_with(scope: :answers, url: quiz_answers_path(@quiz), class: "student-form") do |f|

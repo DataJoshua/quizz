@@ -92,3 +92,7 @@
 .flex-wrapper {
   @apply flex gap-2 justify-center items-center;
 }
+
+.question-title__wrapper, .question-value{
+  @apply flex gap-3
+}
