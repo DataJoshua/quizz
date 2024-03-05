@@ -3,13 +3,13 @@ module Answers
     class Execute
       include Interactor
 
-      delegate :solution_params, :user, to: :context
+      delegate :solution_params, :user, :result, :quiz, to: :context
 
       def call
         answers = []
 
         solution_params.each do |answer_params|
-          params = answer_params.merge(user:)
+          params = answer_params.merge(result: result)
 
           answers << Answer.new(params)
         end

@@ -3,19 +3,13 @@ module Answers
     class ValidateAnswers
       include Interactor
 
-      delegate :quiz, :user, to: :context
+      delegate :result, to: :context
 
       def call
-        questions = quiz.questions.includes(:options)
-  
-        questions.each do |question|
-          question.options.each do |option|
-            is_correct = option.correct
-  
-            option.answers
-                  .where(checked: true, user:)
-                  .update_all(correct: is_correct)
-          end
+        result.answers.each do |answer|
+          is_correct = answer.option.correct
+
+          answer.update(correct: is_correct) if answer.checked
         end
       end
     end
