@@ -23,7 +23,7 @@
 }
 
 .dashboard-title {
-  @apply text-xl text-center py-5;
+  @apply text-2xl text-center py-5;
 }
 
 .card-wrapper {
@@ -32,4 +32,8 @@
 
 .card-title {
   @apply mb-2 text-xl font-bold tracking-tight text-gray-900;
+}
+
+.empty-quiz-wrapper {
+  @apply flex flex-col items-center;
 }
