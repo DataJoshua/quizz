@@ -1,10 +1,9 @@
-= turbo_frame_tag "flash"
-  div[data-controller="toast"]
-    - flash.each do |type, msg|
-      .toast[data-toast-target="body"]
-        .toast-svg-wrapper
-          = inline_svg_tag("toast-img.svg", width: 20, height: 20)
-        .toast-msg
-          = msg
-        .toast-btn[data-action="click->toast#dismiss"]
-          = inline_svg_tag("cross.svg", width: 15, height: 15)
+div[data-controller="toast"]
+  - flash.each do |type, msg|
+    .toast[data-toast-target="body"]
+      .toast-svg-wrapper
+        = inline_svg_tag("toast-img.svg", width: 20, height: 20)
+      .toast-msg
+        = msg
+      .toast-btn[data-action="click->toast#dismiss"]
+        = inline_svg_tag("cross.svg", width: 15, height: 15)

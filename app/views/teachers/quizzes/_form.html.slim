@@ -1,5 +1,5 @@
 .form-wrapper
-  = form_with(model: quiz, class: "quizzes-form", data: { controller: "nested-form" }) do |f|
+  = form_with(model: [:turbo, quiz], class: "quizzes-form", data: { controller: "nested-form" }) do |f|
     div
       = f.text_field :name, placeholder: "Quiz Name:", class: "form-field"
 

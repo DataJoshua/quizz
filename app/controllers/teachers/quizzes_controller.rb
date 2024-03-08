@@ -4,20 +4,6 @@ module Teachers
       @quiz = Quiz.new
     end
 
-    def create
-      @quiz = Quiz.new(quiz_params)
-
-      if create_quiz.success?
-        flash[:notice] = "Quiz created successfully"
-
-        redirect_to dashboard_path
-      else
-        flash[:alert] = create_quiz.error
-
-        render :new, status: :unprocessable_entity
-      end
-    end
-
     def update
       @quiz = Quiz.find(params[:id])
 
@@ -48,10 +34,6 @@ module Teachers
     end
 
     private
-
-    def create_quiz
-      @create_quiz ||= Quizzes::Create.call(quiz: @quiz, user: current_user)
-    end
 
     def update_quiz
       @update_quiz ||= Quizzes::Update.call(quiz: @quiz, quiz_params:)
