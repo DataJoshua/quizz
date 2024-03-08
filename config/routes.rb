@@ -13,6 +13,10 @@ Rails.application.routes.draw do
       resource :dashboard, only: %i[show]
       resources :quizzes, only: %i[edit update create new destroy]
     end
+
+    namespace :turbo do
+      resources :quizzes, only: %i[create], module: :teachers
+    end
   end
 
   constraints(StudentContraint) do
