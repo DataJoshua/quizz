@@ -1,6 +1,10 @@
 - if allowed_to?(:create?, quiz, with: AnswerPolicy)
-  .question-title
-    = question.content
+  .question-title__wrapper
+    .question-title
+      = question.content
+    .question-value
+      h1 Pts.
+      = question.value
   div[data-controller="checkbox"]
     - question.options.each_with_index do |option, index|
       = f.fields_for dom_id(option) do |ff|
