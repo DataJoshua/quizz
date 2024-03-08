@@ -5,7 +5,10 @@ module Students
                   .find(params[:id])
                   .decorate
 
-      @answers = Result.find_by(user: current_user, quiz: @quiz)&.answers
+      @answers = current_user
+                       .results
+                       .find_by(quiz: @quiz)
+                       &.answers
     end
   end
 end
