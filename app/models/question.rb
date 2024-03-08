@@ -6,7 +6,7 @@ class Question < ApplicationRecord
   accepts_nested_attributes_for :options, allow_destroy: true, reject_if: :all_blank
 
   validates :content, presence: true
-  # validate :validate_at_least_one_correct_option
+  validate :validate_at_least_one_correct_option
   validate :validate_at_least_two_options_are_present
 
   private
