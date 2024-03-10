@@ -1,14 +1,19 @@
-= form_with(scope: :user, url: turbo_registration_path, data: { turbo: true }) do |f|
-  div
-    = f.label :username
-    = f.text_field :username
-  div
-    = f.label :password
-    = f.password_field :password
-  div
-    h1
-      | Role:
-    
-    = f.select :role, @roles.pluck(:name, :id)
+.form-wrapper
+  .form-container
+    .form-title
+      | Register
 
-  = f.submit
+    = form_with(scope: :user, url: turbo_registration_path, data: { turbo: true }) do |f|
+      .mb-4
+        = f.label :username, class: "form-label"
+        = f.text_field :username, class: "form-input", placeholder: "Choose a Username"
+      .mb-4
+        = f.label :password, class: "form-label"
+        = f.password_field :password, class: "form-input", placeholder: "Choose a password"
+      .mb-4
+        = f.label :role, class: "form-label"
+        = f.select :role, @roles.pluck(:name, :id), {}, class: "rounded-lg border border-1 border-slate-300"
+
+      .flex-wrapper.flex-col
+        = f.submit class: "form-submit-btn"
+        = link_to "Sign in", new_session_path, data: { turbo: false }, class: "form-sign-btn"

@@ -1,0 +1,40 @@
+.form-wrapper {
+  @apply min-h-screen flex items-center justify-center w-full;
+}
+
+.form-container {
+  @apply bg-white shadow-md rounded-lg px-8 py-6 max-w-md;
+}
+
+.form-title {
+  @apply text-2xl font-bold text-center mb-4;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.form-input {
+  @apply shadow-sm rounded-md w-full px-3 py-2 border border-gray-300;
+}
+
+.form-input:focus {
+  @apply outline-none ring-indigo-500 border-indigo-500;
+}
+
+.form-submit-btn {
+  @apply w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600;
+}
+
+.form-submit-btn:focus {
+  @apply outline-none ring-2 ring-offset-2 ring-indigo-500;
+}
+
+.form-submit-btn:hover {
+  @apply bg-indigo-700;
+}
+
+.form-sign-btn {
+  @apply w-full flex justify-center py-2 px-4 border border-gray-500 rounded-md shadow-sm text-sm font-medium text-slate-900;
+}
+
