@@ -1,0 +1,8 @@
+.card-wrapper
+  .card-title
+    = quiz.name
+
+  - if allowed_to?(:create?, quiz, with: AnswerPolicy)
+    = render "button", label: "Solve", quiz: quiz
+  - else
+    = render "button", label: "View Results", quiz: quiz

@@ -5,13 +5,16 @@ ruby "3.1.0"
 
 gem "rails", "~> 7.0.8"
 gem "interactor"
+gem 'activerecord-import'
 gem "inline_svg", "~> 1.9"
 gem "rolify"
 gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
+gem "seedbank"
 gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
+gem "action_policy"
 gem "stimulus-rails"
 gem "tailwindcss-rails"
 gem "jbuilder"
@@ -36,3 +39,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "draper", "~> 4.0"

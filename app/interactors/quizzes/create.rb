@@ -3,6 +3,7 @@ module Quizzes
     include Interactor::Organizer
 
     organize Quizzes::Create::Execute,
-             Quizzes::Create::CreateUserQuizzes
+             Quizzes::Create::CreateUserQuizzes,
+             Quizzes::Create::UpdateQuizScore
   end
 end

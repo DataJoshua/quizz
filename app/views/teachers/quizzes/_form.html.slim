@@ -1,19 +1,22 @@
 .form-wrapper
-  = form_with(model: [:turbo, quiz], class: "quizzes-form", data: { controller: "nested-form" }) do |f|
-    div
-      = f.text_field :name, placeholder: "Quiz Name:", class: "form-field"
+  = form_with(model: quiz, class: "quizzes-form", data: { controller: "nested-form" }) do |f|
 
-    template[data-nested-form-target="template"]
-      = f.fields_for :questions, Question.new, child_index: "NEW_RECORD" do |ff|
-        = render "question_form", ff: ff, persisted: false, new_id: "NEW_ID"
+    div[data-controller="question-value"]
+      .flex-wrapper
+        = f.text_field :name, placeholder: "Quiz Name:", class: "form-field"
+        = number_field_tag "default", 1, placeholder: "default", class: "max-w-[90px] form-field--small", min: 1, max: 1000, data: { action: "input->question-value#handleMainAction" }
 
-    = f.fields_for :questions, local_assigns[:persisted] ? f.object.questions : f.object.questions.build do |ff|
-      = render "question_form", ff: ff, persisted: local_assigns[:persisted]
+      template[data-nested-form-target="template"]
+        = f.fields_for :questions, Question.new, child_index: "NEW_RECORD" do |ff|
+          = render "question_form", ff: ff, persisted: false, new_id: "NEW_ID"
 
-    div[data-nested-form-target="target"]
+      = f.fields_for :questions, local_assigns[:persisted] ? f.object.questions : f.object.questions.build do |ff|
+        = render "question_form", ff: ff, persisted: local_assigns[:persisted]
 
-    .form-buttons-container
-      button[type="button" class="btn btn-indigo" data-action="nested-form#add"]
-        | Add question
+      div[data-nested-form-target="target"]
 
-      = f.submit class: "btn btn-blue"
+      .form-buttons-container
+        button[type="button" class="btn btn-indigo" data-action="nested-form#add question-value#handleAddAction"]
+          | Add question
+
+        = f.submit class: "btn btn-blue"

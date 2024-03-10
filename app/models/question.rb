@@ -1,11 +1,11 @@
 class Question < ApplicationRecord
   belongs_to :quiz
   has_many :options, dependent: :destroy
-  has_many :answers, dependent: :destroy
 
   accepts_nested_attributes_for :options, allow_destroy: true, reject_if: :all_blank
 
-  validates :content, presence: true
+  validates :content, :value, presence: true
+  validates :value, numericality: { allow_blank: true, greater_than_or_equal_to: 0 }
   validate :validate_at_least_one_correct_option
   validate :validate_at_least_two_options_are_present
 

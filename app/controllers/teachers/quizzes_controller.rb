@@ -47,6 +47,7 @@ module Teachers
       params.require(:quiz)
             .permit(:name, questions_attributes: [:id,
                                            :content,
+                                           :value,
                                            :_destroy, 
                                            options_attributes: %i[id _destroy content correct]])
     end
