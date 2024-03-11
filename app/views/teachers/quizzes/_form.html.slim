@@ -1,5 +1,5 @@
 .form-wrapper
-  = form_with(model: quiz, class: "quizzes-form", data: { controller: "nested-form" }) do |f|
+  = form_with(model: local_assigns[:persisted] ? quiz : [:turbo, quiz], class: "quizzes-form", data: { controller: "nested-form" }) do |f|
 
     div[data-controller="question-value"]
       .flex-wrapper
