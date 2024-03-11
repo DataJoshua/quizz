@@ -1,9 +1,16 @@
-= form_with(scope: :user, url: session_path) do |f|
-  div
-    = f.label :username
-    = f.text_field :username
-  div
-    = f.label :password
-    = f.password_field :password
+.form-wrapper
+  .form-container
+    .form-title
+      | Log In
 
-  = f.submit
+    = form_with(scope: :user, url: session_path) do |f|
+      .mb-4
+        = f.label :username, class: "form-label"
+        = f.text_field :username, class: "form-input", placeholder: "Enter your username"
+      .mb-4
+        = f.label :password, class: "form-label"
+        = f.password_field :password, class: "form-input", placeholder: "Enter yout Password"
+
+      .flex-wrapper.flex-col
+        = f.submit class: "form-submit-btn"
+        = link_to "Register", new_registration_path, class: "form-sign-btn"

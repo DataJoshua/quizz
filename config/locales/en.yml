@@ -43,3 +43,7 @@ en:
       option:
         content: "Option content:"
         correct: "Correct:"
+  helpers:
+    submit:
+      user:
+        create: "Register"
