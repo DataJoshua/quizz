@@ -24,6 +24,7 @@ module Turbo
       def quiz_params
         params.require(:quiz)
               .permit(:name, questions_attributes: [:id,
+                                             :value,
                                              :content,
                                              :_destroy, 
                                              options_attributes: %i[id _destroy content correct]])
