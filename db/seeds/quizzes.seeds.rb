@@ -106,5 +106,8 @@ after :users do
 
       to_save_question.save
     end
-  end  
+
+    points = saved_quiz.questions.count
+    saved_quiz.update(score: points)
+  end
 end
