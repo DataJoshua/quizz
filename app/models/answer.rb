@@ -1,6 +1,6 @@
 class Answer < ApplicationRecord
   belongs_to :option
-  belongs_to :result
+  belongs_to :result_question
 
   validate :correct_nil_on_create, on: :create
 

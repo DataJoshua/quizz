@@ -1,5 +1,5 @@
 class AnswerPolicy < ApplicationPolicy
   def create?
-    user.results.where(quiz: record).empty?
+    user.results.find_by(quiz: record).blank?
   end
 end

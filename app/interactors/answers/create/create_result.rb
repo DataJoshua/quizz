@@ -3,7 +3,7 @@ module Answers
     class CreateResult
       include Interactor
 
-      delegate :user, :quiz, to: :context
+      delegate :result_params, :user, :quiz, to: :context
 
       def call
         context.fail!(error: result_errors) unless result.save
@@ -14,7 +14,7 @@ module Answers
       private
 
       def result
-        @result ||= Result.new(user: user, quiz: quiz)
+        @result ||= Result.new(result_params.merge(user:, quiz:))
       end
 
       def result_errors

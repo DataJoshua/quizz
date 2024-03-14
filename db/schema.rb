@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_05_103854) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_12_201605) do
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "correct"
     t.integer "option_id"
     t.boolean "checked"
-    t.integer "result_id"
+    t.integer "result_question_id"
     t.index ["option_id"], name: "index_answers_on_option_id"
-    t.index ["result_id"], name: "index_answers_on_result_id"
+    t.index ["result_question_id"], name: "index_answers_on_result_question_id"
   end
 
   create_table "options", force: :cascade do |t|
@@ -45,6 +45,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_05_103854) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+  end
+
+  create_table "result_questions", force: :cascade do |t|
+    t.integer "result_id"
+    t.integer "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_result_questions_on_question_id"
+    t.index ["result_id"], name: "index_result_questions_on_result_id"
   end
 
   create_table "results", force: :cascade do |t|
@@ -92,5 +101,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_05_103854) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
-  add_foreign_key "answers", "results"
+  add_foreign_key "answers", "result_questions"
 end

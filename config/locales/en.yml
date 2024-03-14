@@ -32,6 +32,8 @@
 en:
   students:
     quizzes:
+      result_form: 
+        submit: "Solve Quiz"
       show:
         submit: "Submit Test"
   activerecord:
