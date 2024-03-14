@@ -6,13 +6,14 @@
 
 .student-quiz__form-wrapper
   - if allowed_to?(:create?, @quiz, with: AnswerPolicy)
-    = form_with(scope: :answers, url: quiz_answers_path(@quiz), class: "student-form") do |f|
-      - @quiz.questions.each do |question|
-        = render "solve_questions", question: question, quiz: @quiz, f: f
-
-      .student-form__submit
-        = f.submit t(".submit"), class: "btn btn-blue"
+    = render "result_form", quiz: @quiz, result: @result
   - else
     .student-form
-      - @quiz.questions.each do |question|
+      - @result.result_questions.each do |question|
         = render "question_results", question: question
+      hr
+      .total-score
+        .score-title
+          | Your score:
+        .score-value
+          = @result.total_score_percentaje

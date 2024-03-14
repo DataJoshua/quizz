@@ -98,8 +98,8 @@ after :users do
     UserQuiz.create!(user: teacher, quiz: saved_quiz)
 
     quiz[:questions].each do |question|
-      to_save_question = Question.new(content: question[:content], quiz: saved_quiz, value: question[:value])
-      
+      to_save_question = Question.new(content: question[:content], quiz: saved_quiz, value: question[:value], correct_options: 1)
+
       question[:options].each do |option|
         to_save_question.options.new(content: option[:content], correct: option[:correct])
       end

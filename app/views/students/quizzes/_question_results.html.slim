@@ -1,16 +1,16 @@
 .question-title__wrapper
   .question-title
-    = question.content
+    = question.question.content
   .question-value
     h1 Total Points.
-  = question.points_obtained(@answers)
-- question.options.each do |option|
+    = question.score
+
+- question.answers.each do |answer|
   .question-wrapper
     .question-content
-      = option.content
+      = answer.option.content
     .question-result
-      - if option.answer_for_this_option(@answers) 
-        = inline_svg_tag "correct.svg", width: 20, height: 20
-      // Not quite good :/
-      - elsif !option.answer_for_this_option(@answers).nil?
-        = inline_svg_tag "incorrect.svg", width: 20, height: 20
+      - if answer.correct
+        = inline_svg("correct.svg", width: 20, height: 20)
+      - elsif answer.correct == false
+        = inline_svg("incorrect.svg", width: 20, height: 20)

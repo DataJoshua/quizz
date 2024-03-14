@@ -3,8 +3,6 @@ module Answers
     include Interactor::Organizer
 
     organize Answers::Create::CreateResult,
-             Answers::Create::Execute,
-             Answers::Create::ValidateAnswers,
-             Answers::Create::CreateUserQuiz
+             Answers::Create::ValidateAnswers
   end
 end

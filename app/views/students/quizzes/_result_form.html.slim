@@ -1,0 +1,27 @@
+= form_with(model: result, url: quiz_answers_path(quiz), class: "student-form") do |f|
+
+  - quiz.questions.each do |question|
+    = f.fields_for :result_questions, f.object.result_questions.build do |ff|
+      = ff.hidden_field :question_id, value: question.id
+
+      .question-title__wrapper
+        .question-title
+          = question.content
+        .question-value
+          h1 Pts.
+          = question.value
+
+      div[data-controller="checkbox" data-checkbox-correct-options-value="#{question.correct_options}"]
+        - question.options.each_with_index do |option, index|
+          = ff.fields_for :answers, ff.object.answers.build do |fff|
+            = fff.hidden_field :option_id, value: option.id
+
+            .flex.gap-2.items-center
+              .question-content
+                = "#{index + 1}) #{option.content}"
+
+              = fff.check_box :checked, data: { checkbox_target: "checkbox",
+                                          action: "click->checkbox#execute" } 
+
+  .student-form__submit
+    = f.submit t(".submit"), class: "btn btn-blue"

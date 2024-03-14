@@ -21,3 +21,15 @@
 .question-wrapper {
   @apply flex gap-2 items-center;
 }
+
+.total-score {
+  @apply flex gap-5 items-center;
+}
+
+.score-title {
+  @apply text-xl;
+}
+
+.score-value {
+  @apply text-xl;
+}

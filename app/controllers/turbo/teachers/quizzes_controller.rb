@@ -1,9 +1,7 @@
 module Turbo
   module Teachers
     class QuizzesController < ApplicationController
-      def create
-        @quiz = Quiz.new(quiz_params)
-  
+      def create  
         if create_quiz.success?
           flash[:notice] = "Quiz created successfully"
   
@@ -18,7 +16,7 @@ module Turbo
       private
 
       def create_quiz
-        @create_quiz ||= Quizzes::Create.call(quiz: @quiz, user: current_user)
+        @create_quiz ||= Quizzes::Create.call(quiz_params: quiz_params, user: current_user)
       end
 
       def quiz_params

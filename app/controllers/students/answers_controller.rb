@@ -7,10 +7,10 @@ module Students
     def create
       authorize! @quiz, with: AnswerPolicy
 
-      if create_answers.success?
+      if create_result.success?
         flash[:notice] = "Answers saved"
       else
-        flash[:alert] = create_answers.error
+        flash[:alert] = create_result.error
       end
 
       redirect_to quiz_path(@quiz)
@@ -22,12 +22,15 @@ module Students
       @quiz = Quiz.find_by(id: params[:quiz_id])
     end
 
-    def create_answers
-      @create_answer ||= Answers::Create.call(solution_params: solution_params, user: current_user, quiz: @quiz)
+    def create_result
+      @create_answer ||= Answers::Create.call(result_params: result_params, user: current_user, quiz: @quiz)
     end
 
-    def solution_params
-      params[:answers].values
+    def result_params
+      params.require(:result)
+            .permit(result_questions_attributes: [:question_id,
+                                                  :id, 
+                                                  answers_attributes: %i[id checked option_id]])
     end
   end
 end
