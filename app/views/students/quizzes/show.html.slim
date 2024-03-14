@@ -11,3 +11,9 @@
     .student-form
       - @result.result_questions.each do |question|
         = render "question_results", question: question
+      hr
+      .total-score
+        .score-title
+          | Your score:
+        .score-value
+          = @result.total_score_percentaje

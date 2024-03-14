@@ -6,9 +6,11 @@ module Answers
       delegate :result_params, :user, :quiz, to: :context
 
       def call
+        #TODO: implement the Result.import! [result], returning: :id with Postgresql
         context.fail!(error: result_errors) unless result.save
 
-        context.result = result
+        context.result = Result.includes(result_questions: [:question, answers: [:option]])
+                               .find_by(id: result.id)
       end
 
       private

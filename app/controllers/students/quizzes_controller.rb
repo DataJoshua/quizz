@@ -8,8 +8,8 @@ module Students
                   .decorate
 
       @result = current_user.results
-                            .includes(result_questions: [:answers])
-                            .find_by(quiz: @quiz) || Result.new
+                            .includes(:quiz, result_questions: [:answers])
+                            .find_by(quiz: @quiz)&.decorate || Result.new
     end
   end
 end

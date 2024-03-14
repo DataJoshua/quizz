@@ -3,10 +3,14 @@
     = question.question.content
   .question-value
     h1 Total Points.
+    = question.score
 
 - question.answers.each do |answer|
   .question-wrapper
     .question-content
       = answer.option.content
     .question-result
-      = answer.correct
+      - if answer.correct
+        = inline_svg("correct.svg", width: 20, height: 20)
+      - elsif answer.correct == false
+        = inline_svg("incorrect.svg", width: 20, height: 20)

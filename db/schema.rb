@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_12_201605) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_14_095227) do
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_12_201605) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "value"
+    t.integer "correct_options"
     t.index ["quiz_id"], name: "index_questions_on_quiz_id"
   end
 
@@ -52,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_12_201605) do
     t.integer "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "score"
     t.index ["question_id"], name: "index_result_questions_on_question_id"
     t.index ["result_id"], name: "index_result_questions_on_result_id"
   end

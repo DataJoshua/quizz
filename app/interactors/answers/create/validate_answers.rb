@@ -2,54 +2,37 @@ module Answers
   class Create
     class ValidateAnswers
       include Interactor
-
-      # TODO: to reload the result model before the transaction may handle some future bugs
       delegate :result, to: :context
 
       def call
-        context.fail!(error: "Answers not updated!") unless update_answers!
+        context.fail!(error: "Answers not updated!") unless update_result!
       end
 
       private
 
-      def update_answers!
-        Answer.transaction do
-          # Fetch all the answers that answer.option.correct = true and update the /
-          # answer.correct to true
-          result.answers
-                .joins(:option)
-                .where(checked: true, option: { correct: true })
-                .update_all(correct: true)
+      def update_result!
+        Result.transaction do
+          result.result_questions.each do |question|
+            question_value = question.question.value
+            question_correct_options = question.question.correct_options
+            correct_answers = 0
 
-          # Fetch all the answers that answer.option.correct = false, and update the /
-          # answer.correct to false
-          result.answers
-                .joins(:option)
-                .where(checked: true, option: { correct: false })
-                .update_all(correct: false)
+            question.answers.each do |answer|
+              answer.update(correct: answer.option.correct) if answer.checked
 
-          result.update(total_score: result_total_points)
-        end
-      end
+              if answer.checked && answer.option.correct
+                correct_answers += 1
+              end
+            end
 
-      def result_total_points
-        total_points = 0
+            score = (correct_answers / question_correct_options) * question_value
 
-        # This just works if each question just have a single correct answer
-        result.answers
-              .includes(option: [:question])
-              .where(checked: true)
-              .each do |answer|
-
-          if answer.option.correct            
-            question = answer.option.question
-            questions_points = question.value
-
-            total_points+= questions_points
+            question.update(score: score)
           end
-        end
 
-        total_points
+          result.update(total_score: result.result_questions
+                                           .pluck(:score).sum)
+        end
       end
     end
   end
