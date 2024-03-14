@@ -11,7 +11,7 @@
           h1 Pts.
           = question.value
 
-      div[data-controller="checkbox"]
+      div[data-controller="checkbox" data-checkbox-correct-options-value="#{question.correct_options}"]
         - question.options.each_with_index do |option, index|
           = ff.fields_for :answers, ff.object.answers.build do |fff|
             = fff.hidden_field :option_id, value: option.id
@@ -21,7 +21,7 @@
                 = "#{index + 1}) #{option.content}"
 
               = fff.check_box :checked, data: { checkbox_target: "checkbox",
-                                          action: "click->checkbox#handleSingleAnswer" } 
+                                          action: "click->checkbox#execute" } 
 
   .student-form__submit
     = f.submit t(".submit"), class: "btn btn-blue"
