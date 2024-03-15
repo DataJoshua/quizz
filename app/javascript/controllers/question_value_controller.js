@@ -13,14 +13,16 @@ export default class extends Controller {
     this.prevValue = this.currentValue
 
     this.currentValue = e.target.value
-    this.#changeValue(this.currentValue)
-  }
-
-  #changeValue(inputValue) {
+    
     this.inputTargets.forEach(val => {
-      if(this.prevValue == val.value) {
-        val.value = inputValue 
+      if(val.value == this.prevValue) {
+        val.value = this.currentValue 
       }
     })
+  }
+
+  add() {
+    this.inputTargets
+        .forEach(val => val.value = val.value || this.currentValue) 
   }
 }
