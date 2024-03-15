@@ -10,7 +10,7 @@ div[class="nested-form-wrapper question-form" data-new-record="#{ff.object.new_r
   .flex-wrapper
     = ff.text_field :content, class: "form-field--medium", placeholder: "Question content: "
 
-    = ff.number_field :value, class: "form-field--small max-w-[90px]", placeholder: "Value", data: { question_value_target: "input"}
+    = ff.number_field :value, value: 1, min: 1, max: 10000, class: "form-field--small max-w-[90px]", placeholder: "Value", data: { question_value_target: "input" }
 
   = ff.hidden_field :_destroy
   
