@@ -6,17 +6,18 @@ module Answers
       delegate :result_params, :user, :quiz, to: :context
 
       def call
-        #TODO: implement the Result.import! [result], returning: :id with Postgresql
-        context.fail!(error: result_errors) unless result.save
+        context.fail!(error: result_errors) unless result.failed_instances.empty?
 
         context.result = Result.includes(result_questions: [:question, answers: [:option]])
-                               .find_by(id: result.id)
+                               .find_by(id: result.ids.first)
       end
 
       private
 
       def result
-        @result ||= Result.new(result_params.merge(user:, quiz:))
+        result_record = Result.new(result_params.merge(user:, quiz:))
+
+        @result ||= Result.import!([result_record], recursive: true)
       end
 
       def result_errors

@@ -2,6 +2,7 @@ module Answers
   class Create
     class ValidateAnswers
       include Interactor
+
       delegate :result, to: :context
 
       def call
@@ -11,25 +12,32 @@ module Answers
       private
 
       def update_result!
-        Result.transaction do
-          result.result_questions.each do |question|
-            question_value = question.question.value
-            question_correct_options = question.question.correct_options
-            correct_answers = 0
+        answers = []
+        questions = []
 
-            question.answers.each do |answer|
-              answer.update(correct: answer.option.correct) if answer.checked
+        result.result_questions.each do |question|
+          question_value = question.question.value
+          question_correct_options = question.question.correct_options
+          correct_answers = 0
 
-              if answer.checked && answer.option.correct
-                correct_answers += 1
-              end
+          question.answers.each do |answer|
+            if answer.checked
+              answer.correct = answer.option.correct
+              answers << answer
+
+              correct_answers += 1 if answer.option.correct
             end
-
-            score = (correct_answers / question_correct_options) * question_value
-
-            question.update(score: score)
           end
 
+          score = (correct_answers / question_correct_options) * question_value
+
+          question.score = score
+          questions << question
+        end
+
+        Result.transaction do
+          Answer.import! answers, on_duplicate_key_update: [:correct]
+          ResultQuestion.import! questions, on_duplicate_key_update: [:score]
           result.update(total_score: result.result_questions
                                            .pluck(:score).sum)
         end
