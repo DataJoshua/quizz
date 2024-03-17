@@ -20,6 +20,9 @@
       div[data-nested-form-target="target"]
 
       .form-buttons-container
+        .flex.gap-2.items-center
+          = f.label :due_until
+          = f.datetime_field :due_until, data: { controller: "datepicker" } 
         button[type="button" class="btn btn-indigo" data-action="nested-form#add question-value#add"]
           | Add question
 

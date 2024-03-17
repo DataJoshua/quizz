@@ -8,7 +8,7 @@ module Quizzes
       def call
         context.fail!(error: "Quiz was not updated") unless update_all!
       end
-      
+
       private
 
       def update_all!

@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   namespace :turbo do
     resource :registration, only: %i[create]
@@ -26,5 +28,9 @@ Rails.application.routes.draw do
         resources :answers, only: %i[create]
       end
     end
+  end
+
+  if Rails.env.production?
+    mount Sidekiq::Web => "/sidekiq"
   end
 end
