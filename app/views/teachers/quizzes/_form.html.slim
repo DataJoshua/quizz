@@ -21,8 +21,7 @@
 
       .form-buttons-container
         .flex.gap-2.items-center
-          = f.label :due_until
-          = f.datetime_field :due_until, data: { controller: "datepicker" } 
+          = f.text_field :due_until, placeholder: "Select Dedline Date", class: "quiz-datetime-field", data: { controller: "flatpickr", flatpickr_enable_time: true }
         button[type="button" class="btn btn-indigo" data-action="nested-form#add question-value#add"]
           | Add question
 
