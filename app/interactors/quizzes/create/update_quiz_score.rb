@@ -6,17 +6,10 @@ module Quizzes
       delegate :quiz, to: :context
 
       def call
-        context.fail!(error: "Quiz was not updated") unless update_all!
+        context.fail!(error: "Quiz was not updated") unless quiz.update(quiz_update_params) && update_question_correct_options!
       end
-      
-      private
 
-      def update_all!
-        Quiz.transaction do
-          quiz.update(quiz_update_params)
-          update_question_correct_options!
-        end
-      end
+      private
 
       def quiz_update_params
         total_score = quiz.questions.pluck(:value).sum
@@ -27,11 +20,18 @@ module Quizzes
       end
 
       def update_question_correct_options!
-        quiz.questions.each do |question|
-          correct_options = question.options.where(correct: true).count.to_i
+        questions = []
 
-          question.update(correct_options: correct_options)
+        quiz.questions.each do |question|
+          correct_options = question.options
+                                    .where(correct: true)
+                                    .count.to_i
+
+          question.correct_options = correct_options
+          questions << question
         end
+
+        Question.import! questions, on_duplicate_key_update: [:correct_options]
       end
     end
   end
