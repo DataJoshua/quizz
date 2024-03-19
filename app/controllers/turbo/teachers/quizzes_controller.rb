@@ -21,7 +21,7 @@ module Turbo
 
       def quiz_params
         params.require(:quiz)
-              .permit(:name, questions_attributes: [:id,
+              .permit(:name, :due_until, questions_attributes: [:id,
                                              :value,
                                              :content,
                                              :_destroy, 

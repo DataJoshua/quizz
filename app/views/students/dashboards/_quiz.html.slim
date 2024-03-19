@@ -2,7 +2,7 @@
   .card-title
     = quiz.name
 
-  - if allowed_to?(:create?, quiz, with: AnswerPolicy)
+  - if allowed_to?(:create?, quiz, with: AnswerPolicy) || quiz.discarded?
     = render "button", label: "Solve", quiz: quiz
   - else
     = render "button", label: "View Results", quiz: quiz

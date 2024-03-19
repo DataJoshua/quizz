@@ -7,3 +7,5 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "stimulus-rails-nested-form" # @4.1.0
 pin "tailwindcss-stimulus-components" # @4.0.4
+pin "flatpickr" # @4.6.13
+pin "stimulus-flatpickr" # @3.0.0

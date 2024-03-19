@@ -20,6 +20,8 @@
       div[data-nested-form-target="target"]
 
       .form-buttons-container
+        .flex.gap-2.items-center
+          = f.text_field :due_until, placeholder: "Select Dedline Date", class: "quiz-datetime-field", data: { controller: "flatpickr", flatpickr_enable_time: true }
         button[type="button" class="btn btn-indigo" data-action="nested-form#add question-value#add"]
           | Add question
 

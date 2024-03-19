@@ -1,4 +1,6 @@
 class Quiz < ApplicationRecord
+  include Discard::Model
+
   has_and_belongs_to_many :users, join_table: :user_quizzes
   has_many :questions, dependent: :destroy
 
