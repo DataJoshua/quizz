@@ -9,6 +9,6 @@
 .dashboard-body
   .dashboard-title
     | Available Quizzes
-  .dashboard-quizzes-wrapper
+  .dashboard-quizzes-wrapper[data-controller="quiz-creation"]
     - @quizzes.each do |quiz|
       = render "quiz", quiz: quiz
