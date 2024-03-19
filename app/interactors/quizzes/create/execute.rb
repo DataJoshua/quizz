@@ -8,7 +8,7 @@ module Quizzes
       def call
         context.fail!(error: quiz_errros) unless quiz.failed_instances.empty?
 
-        context.quiz = Quiz.includes(:questions)
+        context.quiz = Quiz.includes(questions: [:options])
                            .find_by(id: quiz.ids.first)
       end
 
