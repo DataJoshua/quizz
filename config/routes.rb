@@ -3,6 +3,7 @@ require "sidekiq/web"
 Rails.application.routes.draw do
   namespace :turbo do
     resource :registration, only: %i[create]
+    resource :notification, only: %i[create]
   end
 
   root "registrations#new"
