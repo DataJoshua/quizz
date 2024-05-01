@@ -9,3 +9,6 @@ pin "stimulus-rails-nested-form" # @4.1.0
 pin "tailwindcss-stimulus-components" # @4.0.4
 pin "flatpickr" # @4.6.13
 pin "stimulus-flatpickr" # @3.0.0
+pin "@rails/actioncable", to: "actioncable.esm.js"
+pin_all_from "app/javascript/channels", under: "channels"
+pin "@rails/request.js", to: "@rails--request.js.js" # @0.0.9

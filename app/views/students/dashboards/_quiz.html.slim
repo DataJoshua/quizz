@@ -3,6 +3,6 @@
     = quiz.name
 
   - if allowed_to?(:create?, quiz, with: AnswerPolicy) || quiz.discarded?
-    = render "button", label: "Solve", quiz: quiz
+    = render "students/dashboards/button", label: "Solve", quiz: quiz
   - else
-    = render "button", label: "View Results", quiz: quiz
+    = render "students/dashboards/button", label: "View Results", quiz: quiz
