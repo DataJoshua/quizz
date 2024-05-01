@@ -11,5 +11,4 @@
     | Available Quizzes
   div[data-controller="quiz-creation" data-quiz-creation-path-value=turbo_notification_path]
     = turbo_frame_tag "students-quiz-list", class: "dashboard-quizzes-wrapper" do
-      - @quizzes.each do |quiz|
-        = render "quiz", quiz: quiz
+      = render "quizzes", quizzes: quizzes, paginated_quizzes: paginated_quizzes
