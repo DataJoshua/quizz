@@ -1,0 +1,4 @@
+- quizzes.each do |quiz|
+  = render "students/dashboards/quiz", quiz: quiz
+
+== pagy_nav(paginated_quizzes.first) if paginated_quizzes.first.pages > 1

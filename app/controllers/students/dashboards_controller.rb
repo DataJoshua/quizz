@@ -1,7 +1,9 @@
 module Students
   class DashboardsController < ApplicationController
-    def show
-      @quizzes = Quiz.all.order(created_at: :desc)
-    end
+    expose :raw_quizzes, -> { Quiz.all.order(created_at: :desc) }
+    expose :paginated_quizzes, -> { pagy(raw_quizzes, items: 5) }
+    expose :quizzes, -> { paginated_quizzes.last }
+
+    def show; end
   end
 end

@@ -6,15 +6,12 @@ module Turbo
       end
     end
 
-    def create
-      flash[:notice] = notification_params[:msg]
-      @quiz = Quiz.find_by(id: notification_params[:quiz_id])
-    end
+    expose :raw_quizzes, -> { Quiz.all.order(created_at: :desc) }
+    expose :paginated_quizzes, -> { pagy(raw_quizzes, items: 5, anchor_string: "data-turbo-stream='true'") }
+    expose :quizzes, -> { paginated_quizzes.last }
 
-    private
-
-    def notification_params
-      params.require(:notification).permit(:msg, :quiz_id)
+    def show
+      flash[:notice] = params[:msg]
     end
   end
 end
