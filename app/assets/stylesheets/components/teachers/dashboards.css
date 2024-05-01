@@ -1,3 +1,7 @@
+html, body {
+  @apply h-full;
+}
+
 .teacher-nav {
   @apply flex bg-indigo-300 py-5 justify-around items-center;
 }
@@ -15,7 +19,7 @@
 }
 
 .dashboard-body {
-  @apply bg-indigo-100 h-full h-screen;
+  @apply bg-indigo-100 h-full pb-5 h-full;
 }
 
 .dashboard-quizzes-wrapper {
