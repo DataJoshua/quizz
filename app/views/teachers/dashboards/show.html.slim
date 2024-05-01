@@ -21,4 +21,4 @@
       - quizzes.each do |quiz|
         = render "quiz", quiz: quiz
       
-      == pagy_nav(pagginated_quizzes.first) if pagginated_quizzes.first.pages > 1
+      == pagy_nav(paginated_quizzes.first) if paginated_quizzes.first.pages > 1
