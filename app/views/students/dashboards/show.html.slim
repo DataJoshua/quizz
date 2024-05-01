@@ -9,6 +9,7 @@
 .dashboard-body
   .dashboard-title
     | Available Quizzes
-  .dashboard-quizzes-wrapper[data-controller="quiz-creation" data-quiz-creation-path-value=turbo_notification_path]
-    - @quizzes.each do |quiz|
-      = render "quiz", quiz: quiz
+  div[data-controller="quiz-creation" data-quiz-creation-path-value=turbo_notification_path]
+    = turbo_frame_tag "students-quiz-list", class: "dashboard-quizzes-wrapper" do
+      - @quizzes.each do |quiz|
+        = render "quiz", quiz: quiz

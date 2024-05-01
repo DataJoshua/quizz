@@ -13,7 +13,8 @@ export default class extends Controller {
     consumer.subscriptions.create("QuizChannel", {
       received(data) {
         if(data.action === "create") {
-          post(path, { responseKind: "turbo-stream", body: { msg: data.msg } })
+          console.log(data);
+          post(path, { responseKind: "turbo-stream", body: { msg: data.msg, quiz_id: data.quiz } })
         }
       },
     })
