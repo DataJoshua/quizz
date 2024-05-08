@@ -8,7 +8,7 @@ module Quizzes
              Quizzes::Create::CreateQuizDeprecateJob
 
     after do
-      ActionCable.server.broadcast("quiz_creation_channel", {
+      ActionCable.server.broadcast("quiz_channel", {
         action: "create",
         msg: "A new Quiz has been created"
       })

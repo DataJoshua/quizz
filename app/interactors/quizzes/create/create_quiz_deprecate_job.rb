@@ -7,7 +7,7 @@ module Quizzes
 
       def call
         if quiz.due_until.present?
-          QuizJob.set(wait_until: quiz.due_until).perform_later(quiz: quiz)
+          QuizJob.perform_at(quiz.due_until, quiz.id)
         end
       end
     end
