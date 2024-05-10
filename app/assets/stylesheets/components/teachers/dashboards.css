@@ -2,19 +2,19 @@ html, body {
   @apply h-full;
 }
 
-.teacher-nav {
+.nav-bar {
   @apply flex bg-indigo-300 py-5 justify-around items-center;
 }
 
-.teacher-nav-title {
+.nav-title {
   @apply text-xl;
 }
 
-.teacher-profile {
+.profile {
   @apply flex justify-center items-center gap-2;
 }
 
-.teacher-nav-buttons {
+.nav-buttons {
   @apply flex justify-center gap-2;
 }
 

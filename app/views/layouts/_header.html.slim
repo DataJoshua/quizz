@@ -1,0 +1,15 @@
+.nav-bar
+  .profile
+    = inline_svg_tag "profile.svg", width: 40, height: 40
+    .nav-title
+      - if current_user.present?
+        = "Hi #{current_user.username}"
+      - else 
+        h1
+          | Quizz
+
+  .nav-buttons
+    - if current_user&.has_role?(:teacher)
+      = link_to "create quiz", new_quiz_path, class: "btn btn-blue"
+    - if current_user.present?
+      = link_to "log out", session_path, data: { turbo_method: :delete }, class: "btn btn-red"
