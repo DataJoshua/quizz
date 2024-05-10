@@ -1,13 +1,3 @@
-.teacher-nav
-  .teacher-profile
-    = inline_svg_tag "profile.svg", width: 40, height: 40
-    .teacher-nav-title
-      = "Hi teacher #{current_user.username}"
-
-  .teacher-nav-buttons
-    = link_to "create quiz", new_quiz_path, class: "btn btn-blue"
-    = link_to "log out", session_path, data: { turbo_method: :delete }, class: "btn btn-red"
-
 .dashboard-body
   - if quizzes.empty?
     .empty-quiz-wrapper
