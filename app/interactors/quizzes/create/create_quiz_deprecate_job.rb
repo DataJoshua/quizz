@@ -7,7 +7,8 @@ module Quizzes
 
       def call
         if quiz.due_until.present?
-          QuizJob.perform_at(quiz.due_until, quiz.id)
+          delay = quiz.due_until - Time.now
+          QuizJob.set(wait: delay.seconds).perform_async(quiz.id)
         end
       end
     end

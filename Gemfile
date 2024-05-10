@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.0"
 
-gem 'sidekiq'
+gem "sidekiq"
 gem "rails", "~> 7.0.8"
 gem "interactor"
 gem 'activerecord-import'
