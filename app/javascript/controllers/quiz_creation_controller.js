@@ -12,9 +12,7 @@ export default class extends Controller {
 
     consumer.subscriptions.create("QuizChannel", {
       received(data) {
-        if(data.action === "create") {
-          get(`${path}?msg=${data.msg}`, { responseKind: "turbo-stream" })
-        }
+        get(`${path}?msg=${data.msg}&action=${data.action}`, { responseKind: "turbo-stream" })  
       },
     })
   }

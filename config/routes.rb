@@ -31,7 +31,5 @@ Rails.application.routes.draw do
     end
   end
 
-  if Rails.env.production?
-    mount Sidekiq::Web => "/sidekiq"
-  end
+  mount Sidekiq::Web => "/sidekiq"
 end
